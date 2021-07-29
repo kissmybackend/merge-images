@@ -46,6 +46,10 @@ const mergeImages = (sources = [], options = {}) => new Promise(resolve => {
 			images.forEach(image => {
 				ctx.globalAlpha = image.opacity ? image.opacity : 1;
 				let drawImage;
+				if (image.resize) {
+				  image.width *= image.resize
+				  image.height *= image.resize 
+				}
 				if (image.rotate) {
 				  const x = image.x ? image.x + canvas.width / 2 : canvas.width / 2;
 				  const y = image.y ? image.y + canvas.height / 2 : canvas.height / 2;
